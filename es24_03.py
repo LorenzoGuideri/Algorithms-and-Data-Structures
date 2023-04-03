@@ -100,7 +100,24 @@ The algorithm computes for consequent numbers in array A that sum up to s. its c
 '''
 
 def odd_in_odd(A):
-    return True
+    odds=0
+    for i in A:
+        if i%2:
+            odds+=1
+    menopari=odds>len(A)-odds
+    massimo=2*(len(A)-odds) if menopari else 2*odds
+    if menopari: i,j=0,1
+    else: i,j=1,0
+    while i<massimo:
+        if A[i]%2 == menopari: #se ci sono meno pari e il numero è dispari OPPURE se ci sono meno dispari e il numero è pari 
+            while A[j]%2 == menopari:
+                j=j+2 if j<massimo else j+1
+            A[i],A[j]=A[j],A[i]
+        i+=2
+    return A
+    
+        
+        
 
 
 # print(Algo_x(A))
@@ -110,3 +127,4 @@ def odd_in_odd(A):
 # print(modulo_partition([7,  62,  5,  57,  12,  39,  5,  8,  16,  48]))
 # print(three_way([1,2,3,4,5,6,7,7.6,7,1,2,4,8],7))
 # print(Sum([3,4,6],10))
+# print(odd_in_odd([50,  47,  92,  78,  76,  7,  60,  36,  59,  30,  50,  4]))
