@@ -26,6 +26,7 @@ def count_battleships(A):
 # The complexity is O(n*m), so O(n^2)
 
 def ALgo_X(A,B):
+    if len(A)!=len(B): return False
     C,D=A,B
     C.sort()
     D.sort()
@@ -39,6 +40,7 @@ def find_min_rectangle(points):
         if points[i][0]==points[i+1][0]:
             hors.append([points[i][1],points[i+1][1],points[i][0]])
     minimo=0
+    hors.sort(key=lambda x:x[0])
     for j in range(len(hors)-1):
         if hors[j][0]==hors[j+1][0] and hors[j][1]==hors[j+1][1]:
             if minimo==0 or minimo>(abs(hors[j][0]-hors[j][1])*abs(hors[j][2]-hors[j+1][2])):
@@ -50,6 +52,8 @@ def find_min_rectangle(points):
 if __name__ == "__main__":
     #print(peak_element([1,2,1,3,5,6,4]))
     #print(count_battleships([['X','O','O','X'], ['O','O','O','X'], ['O','X','O','X'],['O','X','O','O']]))
-    print(find_min_rectangle([[1,1], [1,3], [3,3], [3,1], [2,2]]))
-    print(find_min_rectangle([[1,1], [1,3], [3,1], [3,3], [4,1], [4,3]]))
-    print(find_min_rectangle([[1,1], [1,3], [3,1]]))
+    #print(find_min_rectangle([[1,1], [1,3], [3,3], [3,1], [2,2]]))
+    #print(find_min_rectangle([[1,1], [1,3], [3,1], [3,3], [4,1], [4,3]]))
+    #print(find_min_rectangle([[1,1], [1,3], [3,1]]))
+    #print(find_min_rectangle([[1,1], [1,3], [3,1]]))
+    print(find_min_rectangle([[3,2],[0,0],[3,3],[3,4],[4,4],[2,1],[4,3],[1,0],[4,1],[0,2]] ))
